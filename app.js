@@ -238,6 +238,26 @@ var UIController = (function () {
             });
         },
 
+        formatNumber: function (num, type) {
+            var numSplit;
+            /*
+            + or - before the number
+            exactly 2 decimal point
+            comma separating the thousands
+             */
+
+            num = Math.abs(num);
+            num = num.tofixed(2); //Puts 2 decimal numbers on the number on which we called the method
+
+            numSplit = num.split('.');
+
+            int = numSplit[0];
+            if (int.length > 3) {
+                int = int.substr(0, ind.length - 3) + ',' + int.substr(1, 3); //Adds commas between thousands
+            }
+            dec = numSplit[1];
+        },
+
         getDOMstrings: function() {
             return DOMStrings
         }
